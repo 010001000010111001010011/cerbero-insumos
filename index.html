@@ -154,7 +154,7 @@
 
 <section class="seccion">
   <h2>Quiénes somos</h2>
-  <p>Soy barbero, y Cerbero Insumos nació de algo simple: cansarme de comprar insumos sin saber si iban a rendir en el sillón. Acá solo vendemos lo que probamos trabajando: máquinas, afeitado, styling y descartables para que a tu barbería no le falte nada. Si tenés dudas sobre qué te conviene, te asesoro como colega, no como vendedor.</p>
+  <p>Soy barbero, y Cerbero Insumos nació de algo simple: cansarme de comprar insumos sin saber si iban a rendir en el sillón. Acá solo vendemos lo que probamos trabajando: herramientas, máquinas e insumos para que a tu barbería no le falte nada. Si tenés dudas sobre qué te conviene, te asesoro como colega, no como vendedor.</p>
 </section>
 
 <section class="seccion">
@@ -193,24 +193,23 @@
 // ================= CONFIGURACIÓN DE LA TIENDA =================
 const WHATSAPP_NUMERO = "5493804640070"; // 3804 64 0070 con código de país
 
-const CATEGORIAS = ["Todas", "Máquinas de corte", "Afeitado", "Styling",
-                    "Descartables e higiene", "Accesorios", "Combos y ofertas"];
+const CATEGORIAS = ["Todas", "Herramientas y accesorios", "Insumos", "Combos y ofertas"];
 
-const ICONOS = { "Máquinas de corte":"✂️", "Afeitado":"🪒", "Styling":"🧴",
-                 "Descartables e higiene":"🧻", "Accesorios":"💈", "Combos y ofertas":"🎁" };
+const ICONOS = { "Herramientas y accesorios":"✂️", "Insumos":"🧴", "Combos y ofertas":"🎁" };
 
 // Para agregar productos: copiá una línea y cambiá los datos.
 // precio: número (ej: 45000) o null para "Consultar precio".
 // foto: nombre del archivo de imagen subido al repo, o "" para el ícono.
 const PRODUCTOS = [
-  { nombre:"Afeitadora VGR V-325 Professional", categoria:"Máquinas de corte", precio:null, foto:"", desc:"Shaver de 3 cabezales rotativos flotantes, batería de litio recargable y carga rápida." },
-  { nombre:"Máquina de corte VGR con display", categoria:"Máquinas de corte", precio:null, foto:"", desc:"Clipper profesional con pantalla LED de batería y velocidad." },
-  { nombre:"Patillera Kemei profesional", categoria:"Máquinas de corte", precio:null, foto:"", desc:"Trimmer de precisión para contornos, líneas y terminaciones." },
-  { nombre:"Hojas Derby Extra Platinum x100", categoria:"Afeitado", precio:null, foto:"", desc:"Hojas de afeitar de acero inoxidable platino, corte suave y duradero." },
-  { nombre:"Aftershave Cologne L3VEL3", categoria:"Afeitado", precio:null, foto:"", desc:"Colonia post-afeitado: calma, refresca e hidrata la piel. 400 ml." },
-  { nombre:"Cera modeladora Infinity Barber Series (Teia) 160g", categoria:"Styling", precio:null, foto:"", desc:"Modeling wax clásica de fijación fuerte para peinados definidos." },
-  { nombre:"Cera VGR Hair Wax Matte 130g", categoria:"Styling", precio:null, foto:"", desc:"Cera de acabado mate y fijación fuerte, sin residuos grasos." },
-  { nombre:"Papel de cuello para barbería x5 rollos", categoria:"Descartables e higiene", precio:null, foto:"", desc:"Rollos de papel cuello elástico, higiénicos y resistentes al agua." }
+  { nombre:"Afeitadora VGR V-325 Professional", categoria:"Herramientas y accesorios", precio:null, foto:"foto-afeitadora-vgr.jpg", desc:"Shaver de 3 cabezales rotativos flotantes, batería de litio recargable y carga rápida." },
+  { nombre:"Máquina de corte VGR con display", categoria:"Herramientas y accesorios", precio:null, foto:"foto-maquina-vgr.jpg", desc:"Clipper profesional con pantalla LED de batería y velocidad." },
+  { nombre:"Patillera Kemei profesional", categoria:"Herramientas y accesorios", precio:null, foto:"foto-patillera-kemei.jpg", desc:"Trimmer de precisión para contornos, líneas y terminaciones." },
+  { nombre:"Hojas Derby Extra Platinum x100", categoria:"Insumos", precio:null, foto:"foto-hojas-derby.jpg", desc:"Hojas de afeitar de acero inoxidable platino, corte suave y duradero." },
+  { nombre:"Aftershave Cologne L3VEL3", categoria:"Insumos", precio:null, foto:"foto-aftershave.jpg", desc:"Colonia post-afeitado: calma, refresca e hidrata la piel. 400 ml." },
+  { nombre:"Cera modeladora Infinity Barber Series (Teia) 160g", categoria:"Insumos", precio:null, foto:"foto-cera-infinity.jpg", desc:"Modeling wax clásica de fijación fuerte para peinados definidos." },
+  { nombre:"Cera modeladora Infinity Look's Hair Incolor 160g", categoria:"Insumos", precio:null, foto:"foto-cera-infinity-incolor.jpg", desc:"Cera modeladora incolora antifrizz, a base de agua: brillo natural, reduce el volumen y no deja residuos." },
+  { nombre:"Cera VGR Hair Wax Matte 130g", categoria:"Insumos", precio:null, foto:"foto-cera-vgr.jpg", desc:"Cera de acabado mate y fijación fuerte, sin residuos grasos." },
+  { nombre:"Papel de cuello para barbería x5 rollos", categoria:"Insumos", precio:null, foto:"foto-papel-cuello.jpg", desc:"Rollos de papel cuello elástico, higiénicos y resistentes al agua." }
 ];
 // ==============================================================
 
