@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERBERO INSUMOS — Todo lo que tu barbería necesita</title>
+<meta name="description" content="Máquinas e insumos profesionales para barberías. Elegidos por un barbero. Pedidos por WhatsApp.">
+<!--
+  ============================================================
+  CERBERO INSUMOS — tienda estática gratuita (GitHub Pages)
+  ============================================================
+  ARCHIVOS A SUBIR AL REPO (los dos juntos, en la raíz):
+    index.html  y  logo-cerbero.jpg
+
+  CÓMO AGREGAR UN PRODUCTO:
+  1. Buscá abajo la lista PRODUCTOS (en el bloque de código).
+  2. Copiá una línea completa { ... }, pegala y cambiá los datos:
+     - nombre:    nombre del producto
+     - categoria: una de las categorías existentes
+     - precio:    número sin puntos (ej: 45000) o null si es "consultar"
+     - foto:      nombre del archivo de imagen subido a este mismo repo
+                  (ej: "vgr-v325.jpg") o "" para mostrar el ícono
+     - desc:      una línea de descripción
+  3. Guardá y subí el archivo. Listo.
+
+  CÓMO CAMBIAR EL WHATSAPP: buscá WHATSAPP_NUMERO en el bloque de código.
+  CÓMO CAMBIAR LA FRASE: buscá "frase" en esta página y editá el texto.
+  ============================================================
+-->
+<style>
+  :root{
+    --fondo:#0d0d0f; --panel:#161618; --panel2:#1f1f23; --linea:#2b2b30;
+    --texto:#ededed; --suave:#9c9ca4; --plata:#d8d8de; --plata-texto:#111113;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--fondo);color:var(--texto);font-family:'Segoe UI',Arial,sans-serif}
+  a{color:inherit}
+  header{position:sticky;top:0;z-index:20;background:rgba(13,13,15,.96);border-bottom:1px solid var(--linea)}
+  .barra{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .marca{display:flex;align-items:center;gap:11px}
+  .marca img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--linea)}
+  .marca .nombre{font-weight:900;letter-spacing:1.5px;font-size:18px;line-height:1}
+  .marca .nombre small{display:block;font-size:10px;letter-spacing:5px;color:var(--suave);font-weight:700;margin-top:3px}
+  .btn-carrito{background:var(--plata);color:var(--plata-texto);border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;font-size:15px}
+  .btn-carrito:active{transform:scale(.97)}
+  .hero{max-width:1100px;margin:0 auto;padding:46px 16px 30px;text-align:center;
+        background:radial-gradient(ellipse 70% 90% at 50% 0%, #222227 0%, var(--fondo) 70%)}
+  .hero img{width:158px;height:158px;border-radius:50%;object-fit:cover;border:3px solid #3a3a40;box-shadow:0 12px 34px rgba(0,0,0,.55)}
+  .hero h1{font-size:clamp(32px,6.4vw,54px);font-weight:900;letter-spacing:2px;margin:16px 0 4px}
+  .hero h1 span{color:var(--suave)}
+  .hero .slogan{display:inline-block;margin-top:10px;border:1px solid var(--linea);background:var(--panel);border-radius:999px;padding:8px 18px;font-weight:700;font-size:15px}
+  .hero p{color:var(--suave);font-size:clamp(15px,2.6vw,18px);max-width:620px;margin:14px auto 0;line-height:1.5}
+  .confianza{max-width:1100px;margin:8px auto 0;padding:0 16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .confianza div{background:var(--panel);border:1px solid var(--linea);border-radius:10px;padding:9px 14px;font-size:14px;color:var(--suave)}
+  .confianza b{color:var(--texto)}
+  .buscador{max-width:1100px;margin:26px auto 0;padding:0 16px}
+  .buscador input{width:100%;background:var(--panel);border:1px solid var(--linea);border-radius:12px;color:var(--texto);padding:13px 16px;font-size:16px;outline:none}
+  .buscador input:focus{border-color:#4a4a52}
+  .filtros{max-width:1100px;margin:14px auto 4px;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap}
+  .filtros button{background:var(--panel);color:var(--texto);border:1px solid var(--linea);border-radius:999px;padding:8px 14px;cursor:pointer;font-size:14px;font-weight:600}
+  .filtros button.activo{background:var(--plata);color:var(--plata-texto);border-color:var(--plata)}
+  .grilla{max-width:1100px;margin:0 auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s, border-color .15s}
+  .card:hover{transform:translateY(-3px);border-color:#45454d}
+  .card .foto{height:150px;background:linear-gradient(160deg,#232329,#17171a);display:flex;align-items:center;justify-content:center;font-size:52px}
+  .card .foto img{width:100%;height:100%;object-fit:cover}
+  .card .cuerpo{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card .cat{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--suave);font-weight:700}
+  .card h3{font-size:16px;line-height:1.25}
+  .card .desc{font-size:13px;color:var(--suave);flex:1;line-height:1.45}
+  .card .precio{font-size:18px;font-weight:900}
+  .card .precio.consultar{font-size:14px;color:var(--suave);font-weight:700}
+  .card .sumar{background:var(--plata);color:var(--plata-texto);border:0;border-radius:9px;padding:10px;font-weight:800;cursor:pointer;font-size:14px}
+  .card .sumar:active{transform:scale(.98)}
+  .sin-resultados{max-width:1100px;margin:0 auto;padding:8px 16px 4px;color:var(--suave);display:none}
+  .frase{margin:34px 0 6px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+         background:linear-gradient(180deg,#131316,#101012);text-align:center;padding:44px 18px}
+  .frase blockquote{font-family:Georgia,'Times New Roman',serif;font-style:italic;
+                    font-size:clamp(21px,4.4vw,32px);line-height:1.45;max-width:820px;margin:0 auto;color:#e6e6ea}
+  .frase cite{display:block;margin-top:16px;font-style:normal;font-family:'Segoe UI',Arial,sans-serif;
+              color:var(--suave);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+  .seccion{max-width:1100px;margin:10px auto;padding:22px 16px}
+  .seccion h2{font-size:24px;font-weight:900;margin-bottom:8px;letter-spacing:.5px}
+  .seccion p{color:var(--suave);line-height:1.6;max-width:720px}
+  .seccion p b{color:var(--texto)}
+  footer{border-top:1px solid var(--linea);margin-top:16px}
+  .pie{max-width:1100px;margin:0 auto;padding:22px 16px 96px;color:var(--suave);font-size:14px;display:flex;flex-direction:column;gap:6px}
+  .pie b{color:var(--texto)}
+  .wa-flotante{position:fixed;right:16px;bottom:16px;z-index:25;background:#1f1f23;border:1px solid #3d3d44;color:var(--texto);
+               border-radius:999px;padding:12px 18px;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+  .wa-flotante:active{transform:scale(.97)}
+  /* Carrito */
+  .fondo-carrito{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;z-index:30}
+  .fondo-carrito.abierto{display:block}
+  .carrito{position:fixed;top:0;right:0;height:100%;width:min(380px,92vw);background:var(--panel);z-index:31;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;border-left:1px solid var(--linea)}
+  .carrito.abierto{transform:translateX(0)}
+  .carrito .cab{padding:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--linea)}
+  .carrito h2{font-size:19px}
+  .cerrar{background:var(--panel2);color:var(--texto);border:1px solid var(--linea);border-radius:8px;padding:6px 11px;cursor:pointer;font-size:15px}
+  .items{flex:1;overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+  .item{display:flex;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--linea);border-radius:10px;padding:9px 11px}
+  .item .info{flex:1}
+  .item .info b{font-size:14px;display:block}
+  .item .info span{font-size:13px;color:var(--suave)}
+  .cant{display:flex;align-items:center;gap:7px}
+  .cant button{width:26px;height:26px;border-radius:7px;border:1px solid var(--linea);background:var(--panel);color:var(--texto);cursor:pointer;font-weight:800}
+  .carrito .pie-carrito{padding:14px 16px;border-top:1px solid var(--linea);display:flex;flex-direction:column;gap:10px}
+  .total{font-size:17px;font-weight:900;display:flex;justify-content:space-between}
+  .btn-wa{background:var(--plata);color:var(--plata-texto);border:0;border-radius:10px;padding:13px;font-weight:900;font-size:16px;cursor:pointer}
+  .vacio{color:var(--suave);text-align:center;padding:26px 8px;font-size:14px}
+  .nota{font-size:12.5px;color:var(--suave)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="barra">
+    <div class="marca">
+      <img src="logo-cerbero.jpg" alt="Cerbero Insumos">
+      <div class="nombre">CERBERO<small>INSUMOS</small></div>
+    </div>
+    <button class="btn-carrito" id="abrirCarrito">🛒 Mi pedido (<span id="contador">0</span>)</button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="logo-cerbero.jpg" alt="Logo Cerbero Insumos — tres perros guardianes">
+  <h1>CERBERO <span>INSUMOS</span></h1>
+  <div class="slogan">Todo lo que tu barbería necesita</div>
+  <p>Máquinas e insumos profesionales, elegidos por un barbero que los usa todos los días en el sillón.</p>
+</section>
+
+<div class="confianza">
+  <div>🚚 <b>Envíos</b> a todo el país</div>
+  <div>💳 <b>Pagos</b> con tarjeta y transferencia</div>
+  <div>💈 <b>Asesoramiento</b> de barbero a barbero</div>
+</div>
+
+<div class="buscador">
+  <input type="search" id="buscar" placeholder="🔎 Buscar un producto… (ej: cera, máquina, hojas)">
+</div>
+
+<nav class="filtros" id="filtros"></nav>
+<div class="sin-resultados" id="sinResultados">No se encontró ningún producto con esa búsqueda.</div>
+<main class="grilla" id="grilla"></main>
+
+<section class="frase">
+  <blockquote>«Y no se muere quien se va, sólo se muere el que se olvida.<br>
+  Al fin y al cabo, la muerte va tan segura de ganar,<br>
+  que de ventaja te da una vida.»</blockquote>
+  <cite>— Canserbero · «El primer trago»</cite>
+</section>
+
+<section class="seccion">
+  <h2>Quiénes somos</h2>
+  <p>Soy barbero, y Cerbero Insumos nació de algo simple: cansarme de comprar insumos sin saber si iban a rendir en el sillón. Acá solo vendemos lo que probamos trabajando: herramientas, máquinas e insumos para que a tu barbería no le falte nada. Si tenés dudas sobre qué te conviene, te asesoro como colega, no como vendedor.</p>
+</section>
+
+<section class="seccion">
+  <h2>Preguntas frecuentes</h2>
+  <p><b>¿Hacen envíos?</b> Sí, a todo el país; costo y tiempo se confirman por WhatsApp según tu zona.<br>
+  <b>¿Cómo pago?</b> Tarjeta, transferencia o efectivo al retirar — lo coordinamos por WhatsApp.<br>
+  <b>¿Venden por mayor?</b> Sí, para barberías hay precio de colega: consultanos por WhatsApp.<br>
+  <b>¿Si algo falla?</b> Escribinos dentro de los 10 días y coordinamos el cambio por falla de fábrica.</p>
+</section>
+
+<footer>
+  <div class="pie">
+    <span><b>CERBERO INSUMOS</b> — Todo lo que tu barbería necesita</span>
+    <span>📸 Instagram: <a href="https://instagram.com/cerbero.insumos" target="_blank" rel="noopener">@cerbero.insumos</a></span>
+    <span>💬 WhatsApp: <a href="https://wa.me/5493804640070" target="_blank" rel="noopener">3804 64 0070</a></span>
+  </div>
+</footer>
+
+<a class="wa-flotante" href="https://wa.me/5493804640070?text=Hola%20Cerbero%20Insumos!%20Quiero%20consultar%20por%20un%20producto." target="_blank" rel="noopener">💬 Consultar</a>
+
+<div class="fondo-carrito" id="fondoCarrito"></div>
+<aside class="carrito" id="carrito">
+  <div class="cab">
+    <h2>🛒 Tu pedido</h2>
+    <button class="cerrar" id="cerrarCarrito">✕</button>
+  </div>
+  <div class="items" id="items"></div>
+  <div class="pie-carrito">
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <div class="nota" id="totalNota"></div>
+    <button class="btn-wa" id="pedirWa">Pedir por WhatsApp 💬</button>
+  </div>
+</aside>
+
+<script>
+// ================= CONFIGURACIÓN DE LA TIENDA =================
+const WHATSAPP_NUMERO = "5493804640070"; // 3804 64 0070 con código de país
+
+const CATEGORIAS = ["Todas", "Herramientas y accesorios", "Insumos", "Combos y ofertas"];
+
+const ICONOS = { "Herramientas y accesorios":"✂️", "Insumos":"🧴", "Combos y ofertas":"🎁" };
+
+// Para agregar productos: copiá una línea y cambiá los datos.
+// precio: número (ej: 45000) o null para "Consultar precio".
+// foto: nombre del archivo de imagen subido al repo, o "" para el ícono.
+const PRODUCTOS = [
+  { nombre:"Afeitadora VGR V-325 Professional", categoria:"Herramientas y accesorios", precio:null, foto:"foto-afeitadora-vgr.jpg", desc:"Shaver de 3 cabezales rotativos flotantes, batería de litio recargable y carga rápida." },
+  { nombre:"Máquina de corte VGR con display", categoria:"Herramientas y accesorios", precio:null, foto:"foto-maquina-vgr.jpg", desc:"Clipper profesional con pantalla LED de batería y velocidad." },
+  { nombre:"Patillera Kemei profesional", categoria:"Herramientas y accesorios", precio:null, foto:"foto-patillera-kemei.jpg", desc:"Trimmer de precisión para contornos, líneas y terminaciones." },
+  { nombre:"Hojas Derby Extra Platinum x100", categoria:"Insumos", precio:null, foto:"foto-hojas-derby.jpg", desc:"Hojas de afeitar de acero inoxidable platino, corte suave y duradero." },
+  { nombre:"Aftershave Cologne L3VEL3", categoria:"Insumos", precio:null, foto:"foto-aftershave.jpg", desc:"Colonia post-afeitado: calma, refresca e hidrata la piel. 400 ml." },
+  { nombre:"Cera modeladora Infinity Barber Series (Teia) 160g", categoria:"Insumos", precio:null, foto:"foto-cera-infinity.jpg", desc:"Modeling wax clásica de fijación fuerte para peinados definidos." },
+  { nombre:"Cera modeladora Infinity Look's Hair Incolor 160g", categoria:"Insumos", precio:null, foto:"foto-cera-infinity-incolor.jpg", desc:"Cera modeladora incolora antifrizz, a base de agua: brillo natural, reduce el volumen y no deja residuos." },
+  { nombre:"Cera VGR Hair Wax Matte 130g", categoria:"Insumos", precio:null, foto:"foto-cera-vgr.jpg", desc:"Cera de acabado mate y fijación fuerte, sin residuos grasos." },
+  { nombre:"Papel de cuello para barbería x5 rollos", categoria:"Insumos", precio:null, foto:"foto-papel-cuello.jpg", desc:"Rollos de papel cuello elástico, higiénicos y resistentes al agua." }
+];
+// ==============================================================
+
+let filtro = "Todas";
+let textoBusqueda = "";
+let pedido = {}; // nombre -> cantidad
+
+const $grilla = document.getElementById("grilla");
+const $filtros = document.getElementById("filtros");
+const $contador = document.getElementById("contador");
+const $sin = document.getElementById("sinResultados");
+const fmt = n => "$" + n.toLocaleString("es-AR");
+
+function renderFiltros(){
+  $filtros.innerHTML = "";
+  CATEGORIAS.forEach(cat => {
+    const b = document.createElement("button");
+    b.textContent = cat;
+    if (cat === filtro) b.classList.add("activo");
+    b.onclick = () => { filtro = cat; renderFiltros(); renderGrilla(); };
+    $filtros.appendChild(b);
+  });
+}
+
+function productosVisibles(){
+  const t = textoBusqueda.trim().toLowerCase();
+  return PRODUCTOS.filter(p =>
+    (filtro === "Todas" || p.categoria === filtro) &&
+    (t === "" || (p.nombre + " " + p.desc + " " + p.categoria).toLowerCase().includes(t))
+  );
+}
+
+function renderGrilla(){
+  $grilla.innerHTML = "";
+  const lista = productosVisibles();
+  $sin.style.display = lista.length ? "none" : "block";
+  lista.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "card";
+    const foto = p.foto
+      ? `<div class="foto"><img src="${p.foto}" alt="${p.nombre}"></div>`
+      : `<div class="foto">${ICONOS[p.categoria] || "📦"}</div>`;
+    const precio = (p.precio === null || p.precio === undefined)
+      ? `<div class="precio consultar">Consultar precio</div>`
+      : `<div class="precio">${fmt(p.precio)}</div>`;
+    card.innerHTML = `${foto}
+      <div class="cuerpo">
+        <div class="cat">${p.categoria}</div>
+        <h3>${p.nombre}</h3>
+        <div class="desc">${p.desc}</div>
+        ${precio}
+        <button class="sumar">Agregar al pedido +</button>
+      </div>`;
+    card.querySelector(".sumar").onclick = () => { agregar(p.nombre); };
+    $grilla.appendChild(card);
+  });
+}
+
+document.getElementById("buscar").addEventListener("input", e => {
+  textoBusqueda = e.target.value;
+  renderGrilla();
+});
+
+function agregar(nombre){
+  pedido[nombre] = (pedido[nombre] || 0) + 1;
+  renderPedido();
+  abrirCarrito();
+}
+function cambiar(nombre, delta){
+  pedido[nombre] = (pedido[nombre] || 0) + delta;
+  if (pedido[nombre] <= 0) delete pedido[nombre];
+  renderPedido();
+}
+
+function renderPedido(){
+  const $items = document.getElementById("items");
+  const $total = document.getElementById("total");
+  const $nota = document.getElementById("totalNota");
+  $items.innerHTML = "";
+  let total = 0, unidades = 0, haySinPrecio = false;
+  Object.keys(pedido).forEach(nombre => {
+    const p = PRODUCTOS.find(x => x.nombre === nombre);
+    const cant = pedido[nombre];
+    unidades += cant;
+    let sub = "Consultar";
+    if (p && p.precio !== null && p.precio !== undefined){ total += p.precio * cant; sub = fmt(p.precio * cant); }
+    else haySinPrecio = true;
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `<div class="info"><b>${nombre}</b><span>${sub}</span></div>
+      <div class="cant"><button aria-label="quitar">−</button><b>${cant}</b><button aria-label="agregar">+</button></div>`;
+    div.querySelectorAll("button")[0].onclick = () => cambiar(nombre, -1);
+    div.querySelectorAll("button")[1].onclick = () => cambiar(nombre, +1);
+    $items.appendChild(div);
+  });
+  if (unidades === 0){
+    $items.innerHTML = `<div class="vacio">Tu pedido está vacío.<br>Agregá productos del catálogo 👇</div>`;
+  }
+  $total.textContent = fmt(total);
+  $nota.textContent = haySinPrecio ? "Hay productos sin precio cargado: el total final se confirma por WhatsApp." : "";
+  $contador.textContent = unidades;
+}
+
+function abrirCarrito(){
+  document.getElementById("carrito").classList.add("abierto");
+  document.getElementById("fondoCarrito").classList.add("abierto");
+}
+function cerrarCarrito(){
+  document.getElementById("carrito").classList.remove("abierto");
+  document.getElementById("fondoCarrito").classList.remove("abierto");
+}
+document.getElementById("abrirCarrito").onclick = abrirCarrito;
+document.getElementById("cerrarCarrito").onclick = cerrarCarrito;
+document.getElementById("fondoCarrito").onclick = cerrarCarrito;
+
+document.getElementById("pedirWa").onclick = () => {
+  const nombres = Object.keys(pedido);
+  if (!nombres.length){ alert("Tu pedido está vacío: agregá al menos un producto."); return; }
+  let total = 0;
+  const lineas = ["Hola Cerbero Insumos! Quiero hacer un pedido:", ""];
+  nombres.forEach(nombre => {
+    const p = PRODUCTOS.find(x => x.nombre === nombre);
+    const cant = pedido[nombre];
+    let precioTxt = " (consultar precio)";
+    if (p && p.precio !== null && p.precio !== undefined){ total += p.precio * cant; precioTxt = " — " + fmt(p.precio * cant); }
+    lineas.push(`• ${cant} x ${nombre}${precioTxt}`);
+  });
+  if (total > 0) lineas.push("", "Total estimado: " + fmt(total));
+  lineas.push("", "¿Me confirmás disponibilidad y envío? ¡Gracias!");
+  window.open("https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(lineas.join("\n")), "_blank");
+};
+
+renderFiltros();
+renderGrilla();
+renderPedido();
+</script>
+</body>
+</html>
